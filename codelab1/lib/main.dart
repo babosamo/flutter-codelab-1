@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
       title: 'Startup Name Generator',
       home: RandomWords(),
     );
-
   }
 }
 
@@ -21,8 +20,7 @@ class RandomWordsState extends State<RandomWords> {
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold (
+    return Scaffold(
       appBar: AppBar(
         title: Text('Startup Name Generator'),
       ),
@@ -73,8 +71,17 @@ class RandomWordsState extends State<RandomWords> {
       ),
       trailing: Icon(
         alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color : alreadySaved ? Colors.red : null,
+        color: alreadySaved ? Colors.red : null,
       ),
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 }
